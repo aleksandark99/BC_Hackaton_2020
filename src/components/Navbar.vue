@@ -1,7 +1,7 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="#">GarbageCollectors</b-navbar-brand>
+    <b-navbar id="nav" toggleable="lg" type="dark" variant="info">
+      <b-navbar-brand to="/">GarbageCollectors</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -11,15 +11,20 @@
           >
 
           <b-nav-item href="#">Finished events</b-nav-item>
+          <b-nav-item href="#">Pending events to be approved</b-nav-item>
+
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-                      <b-button size="sm" class="my-2 my-sm-0" variant="success">Register</b-button>
-                      <br>
-                      <br>
+                              <b-nav-item href="#">Register</b-nav-item>
+                              <b-nav-item to="/login">Login</b-nav-item>
+                              <b-nav-item to="/login">My events</b-nav-item>
 
-                                <b-button size="sm" class="my-2 my-sm-0" variant="danger">Login</b-button>
+
+                     
+                      <!-- <b-button to="/login" size="sm" class="my-2 my-sm-0" variant="success">Login</b-button> -->
+
 
   
 
@@ -48,8 +53,8 @@ export default {
 </script>
 
 <style scoped>
-.btn-success {
-  margin-right: 5px;
-  padding-bottom: 5px;
+
+#nav{
+    margin-bottom: 20px;
 }
 </style>
