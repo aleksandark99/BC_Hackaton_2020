@@ -1,6 +1,8 @@
 <template>
   <div>
-      
+       <div class="container" id="s">
+      <div class="row">
+        <div class="col-md-5 mx-auto">
   <div>
       This is picure of location before cleanup:
       <br>
@@ -8,16 +10,20 @@
   <br>
     Event Description: 
     <br>
-    <p>{{event.eventDescription}}</p>
+    <p id="eventDesc">{{event.eventDescription}}</p>
     <br>
     <p v-if="event.isFinished">This event is in progress. Organizator will upload results when location is cleaned</p>
 </div>
 
 
   </div>
+  </div>
+  </div>
+  </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
       props: ["id"],
   name: 'SingleEvent',
@@ -34,9 +40,27 @@ export default {
             organizedBy:'Pera petrovic'
           }
       }
+  },
+  mounted(){
+    axios.get('/event/id', {
+    params: {
+      ID: 12345
+    }
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
   }
 };
 </script>
 
-<style>
+<style scoped>
+#eventDesc{
+  border-style: solid;
+  background: gray;
+  color: blue;
+}
 </style>

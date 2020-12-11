@@ -11,7 +11,8 @@ Vue.use(IconsPlugin)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import axios from 'axios'
-axios.defaults.baseURL = 'https://garbage-collectors.herokuapp.com/garbagecollectors'
+// axios.defaults.baseURL = 'https://garbage-collectors.herokuapp.com/garbagecollectors'
+axios.defaults.baseURL = 'http://localhost:8081/garbagecollectors'
 
 Vue.config.productionTip = false
 

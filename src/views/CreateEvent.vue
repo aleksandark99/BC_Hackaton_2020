@@ -40,7 +40,7 @@
 
       ></b-form-textarea>
   </div>
-    <b-button @click="visitPlace" variant="success">Create Event</b-button> 
+    <b-button @click="createEvent" variant="success">Create Event</b-button> 
 
     </div>
     </div>
@@ -89,9 +89,11 @@ Places
     createEvent() {
       let formData = new FormData();
       formData.append("image", this.cuurentImage);
-      axios.post("upload", formData, {
+      axios.post("user/event", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhIiwiZXhwIjoxNjA3NzY1MTI5LCJpYXQiOjE2MDc3MjkxMjl9.1UAXU0Ltjt4quMHsyx17Ate4q-t59dKomugtiZEf5IU",
+
           },
         })
         .then((res) => {

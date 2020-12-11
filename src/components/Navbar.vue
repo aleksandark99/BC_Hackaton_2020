@@ -7,7 +7,7 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-button size="sm" class="my-2 my-sm-0" variant="success">Create new event</b-button
+          <b-button  to="/newevent" size="sm" class="my-2 my-sm-0" variant="success">Create new event</b-button
           >
 
           <b-nav-item href="#">Finished events</b-nav-item>
