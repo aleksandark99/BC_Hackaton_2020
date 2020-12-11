@@ -1,5 +1,11 @@
 <template>
-  <div>Home</div>
+  <div>
+      <!-- this is where all events will be shown -->
+      
+
+
+
+  </div>
 </template>
 
 <script>
