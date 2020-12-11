@@ -1,5 +1,6 @@
 <template>
   <div>
+    <router-link to="/newevent">aaM</router-link>
     <div class="container" id="s">
       <div class="row">
         <div class="col-md-4 mx-auto">

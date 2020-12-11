@@ -13,6 +13,7 @@
     "bootstrap-vue": "^2.20.1",
     "core-js": "^3.6.5",
     "vue": "^2.6.12",
+    "vue-places": "^2.2.1",
     "vue-router": "^3.4.9",
     "vue-social-sharing": "^3.0.4",
     "vuex": "^3.6.0"
