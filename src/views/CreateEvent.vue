@@ -1,5 +1,8 @@
 <template>
   <div>
+          <div class="container" id="s">
+      <div class="row">
+        <div class="col-md-5 mx-auto">
     <div class="file-upload-form">
       Upload an image of place that needs our help:
       <b-form-file class="mt-3" plain @change="previewImage" accept="image/*" />
@@ -11,18 +14,37 @@
     <div>
 
     </div>
-    <b-button @click="createEvent" variant="success">Button</b-button> 
 <!--  -->
-<template>
+        
+            <b-form-group id="input-group-1" label="Naziv:" label-for="input-1">
+              <b-form-input id="input-1" 
+              v-model="title" 
+              required 
+              placeholder="Enter event title">
+              </b-form-input>
+            </b-form-group>
   <places
     v-model="form.country.label"
     placeholder="Where are we going ?"
     @change="val => { form.country.data = val }"
     :options="{ countries: [] }">
   </places>
-    <b-button @click="visitPlace" variant="success">Create Event</b-button> 
-</template>
 
+      <div>
+   <b-form-textarea
+        id="textarea-auto-height"
+        placeholder="Auto height textarea"
+        rows="5"
+        max-rows="8"
+        v-model="text"
+
+      ></b-form-textarea>
+  </div>
+    <b-button @click="visitPlace" variant="success">Create Event</b-button> 
+
+    </div>
+    </div>
+    </div>
 
 
   </div>
@@ -34,12 +56,15 @@ import Places from 'vue-places'
 
 export default {
   name: "CreateEvent",
+ 
   components:{
 Places
   },
 
   data() {
     return {
+       text:"",
+  title:"",
            form: {
         country: {
           label: null,
@@ -55,9 +80,10 @@ Places
   },
   methods: {
     visitPlace(){
-        // var aaa = "https://www.google.com/maps/"+this.form.country.label
-        location.replace("https://www.google.com/maps/place/"+this.form.country.label.replace(/,/g, ' '));
-        // console.log(this.form.country.label)
+        // location.replace("https://www.google.com/maps/place/"+this.form.country.label.replace(/,/g, ' '));
+
+        console.log(this.text)
+
 
     },
     createEvent() {
