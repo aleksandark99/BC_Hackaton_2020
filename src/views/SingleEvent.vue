@@ -174,7 +174,7 @@ export default {
 
     this.putRoles();
     this.userRole=localStorage.getItem("role"),
-    this.thisURL="https://garbagecollectors.netlify.app/"+this.$router.currentRoute.path;
+    this.thisURL="https://garbagecollectors.netlify.app"+this.$router.currentRoute.path;
     axios
       .get("/event/"+this.id,{
           headers: {
