@@ -94,8 +94,8 @@
 
           </div>
           <div v-show="isAdmin" id="adminovPosao">
-            <b-button  v-show="event.finished" @click="verifyEvent(true)" class="bottomM" variant="success">    Event was successfual</b-button> 
-              <b-button v-show="event.finished" @click="verifyEvent(false)" class="bottomM" variant="danger">  Event Failed</b-button> 
+            <b-button  v-show="event.finished&&!event.verified" @click="verifyEvent(true)" class="bottomM" variant="success">    Event was successfual</b-button> 
+              <b-button v-show="event.finished&&!event.verified" @click="verifyEvent(false)" class="bottomM" variant="danger">  Event Failed</b-button> 
           </div>
         </div>
       </div>
@@ -156,7 +156,7 @@ export default {
           }}
           )
       .then((res) => {
-        this.numOfppl=res.data;
+        this.numOfppl=res.data.usersNum;
 
       })
 
