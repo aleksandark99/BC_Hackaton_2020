@@ -8,8 +8,12 @@ export default {
   mounted(){
     localStorage.removeItem("username")
     localStorage.removeItem("role")
+        localStorage.removeItem("jwt")
+
          this.$store.commit("setUsername", null);
           this.$store.commit("setIsNotLogged", true);
+          this.$store.commit("setIsAdmin",false)
+
     this.$router.push("/login")
 
   }

@@ -7,11 +7,11 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-button  to="/newevent"  class="my-2 my-sm-0" variant="success">Create new event</b-button
+          <b-button v-show="!isLoggedIn"  to="/newevent"  class="my-2 my-sm-0" variant="success">Create new event</b-button
           >
 
-          <b-nav-item to="/FinishedEvents">Finished events</b-nav-item>
-          <b-nav-item href="#">Pending events to be approved</b-nav-item>
+          <b-nav-item to="/finishedEvents">Finished events</b-nav-item>
+          <b-nav-item  v-show="isAdmin" to="/approve">Pending events to be approved</b-nav-item>
 
         </b-navbar-nav>
 
@@ -53,6 +53,10 @@ export default {
     {
 
       isLoggedIn:{
+             type: Boolean,
+      required: true,
+      },
+            isAdmin:{
              type: Boolean,
       required: true,
       }

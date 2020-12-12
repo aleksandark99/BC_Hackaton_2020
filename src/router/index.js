@@ -6,6 +6,10 @@ import SingleEvent from '../views/SingleEvent.vue'
 import CreateEvent from '../views/CreateEvent.vue'
 import FinishedEvents from '../views/FinishedEvents.vue'
 import Logout from '../views/Logout.vue'
+import EventsToApprove from '../views/EventsToApprove.vue'
+import ScoreBoard from '../views/ScoreBoard.vue'
+import UserEvents from '../views/UserEvents.vue'
+
 
 Vue.use(VueRouter)
 
@@ -41,6 +45,24 @@ const routes = [
         name: 'Logout',
         component: Logout,
     },
+    {
+        path: '/approve',
+        name: 'EventsToApprove',
+        component: EventsToApprove,
+    },
+    {
+        path: '/score',
+        name: 'ScoreBoard',
+        component: ScoreBoard,
+    },
+    {
+        path: '/users/:id',
+        name: 'UserEvents',
+        component: UserEvents,
+        props:true
+
+    }
+
 ]
 const router = new VueRouter({
     routes,

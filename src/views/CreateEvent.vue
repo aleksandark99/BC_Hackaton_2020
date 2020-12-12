@@ -106,6 +106,8 @@ Places
         })
         .then((res) => {
           console.log(res);
+                  this.$router.push("/")
+
         })
         .catch((res) => {
           console.log(res);

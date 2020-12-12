@@ -2,8 +2,10 @@
   <div>
     <div class="container" id="s">
       <div class="row">
-        <div class="col-md-5 mx-auto">
+        <div class="col-md-6 mx-auto">
           <div>
+            <h1>{{event.eventName}}</h1>
+            <h2 v-show="event.finished">This event was {{suc}}</h2>
             This is picure of location before cleanup:
             <br />
             <b-img
@@ -16,10 +18,31 @@
             <br />
             <p id="eventDesc">{{ event.eventDescription.slice(1) }}</p>
             <br />
+            <p>this event is taking place in:</p>
               <a :href="event.locationURL" target="_blank">{{event.locationString}}</a>
               <br>
+                <div id="posleEventa" v-show="event.finished">
+                         This is picure of location after cleanup:
+            <br />
+            <b-img
+              :src="event.imgAfterURL"
+              fluid
+              alt="Responsive image"
+            ></b-img>
+            <br />
+              This is picure of team that helped us clean this place:
+            <br />
+            <b-img
+              :src="event.imgTeamURL"
+              fluid
+              alt="Responsive image"
+            ></b-img>
+            <br />
+                </div>
 
-            <b-button v-show="isUser" :disabled="!event.going" class="bottomM" variant="success"
+
+
+            <b-button @click="ConfirmPresence" v-show="isUser&&!event.finished" :disabled="event.going" class="bottomM" variant="success"
               >I am going !</b-button
             >
 
@@ -27,8 +50,7 @@
               This event is in progress. Organizator will upload results when
               location is cleaned
             </p>
-            
-            <div v-show="isOrganizator" id="afterImage" class="file-upload-form">
+            <div v-show="isOrganizator&&!event.finished" id="afterImage" class="file-upload-form">
               Upload an image of place after cleanup:
               <b-form-file
                 class="mt-3"
@@ -37,11 +59,11 @@
                 accept="image/*"
               />
             </div>
-            <div v-show="isOrganizator" class="image-preview" v-if="imageData.length > 0">
+            <div v-show="isOrganizator&&!event.finished" class="image-preview" v-if="imageData.length > 0">
               <img class="preview" :src="imageData" />
             </div>
 
-            <div v-show="isOrganizator" id="teamImage" class="file-upload-form">
+            <div v-show="isOrganizator&&!event.finished" id="teamImage" class="file-upload-form">
               Upload team picture:
               <b-form-file
                 class="mt-3"
@@ -53,6 +75,8 @@
             <div class="image-preview" v-if="imageData1.length > 0">
               <img class="preview" :src="imageData1" />
             </div>
+              <p v-if="!event.finished">Number of people going: {{numOfppl}}</p>
+    <p v-if="event.finished">Number of people that helped: {{numOfppl}}</p>
 
                 <ShareNetwork
     network="twitter"
@@ -60,13 +84,18 @@
     title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
     description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
     hashtags="CleanWithUs"
-  >
+  >   
+
                   <b-button  class="bottomM" variant="success">    Share on Twitter</b-button> 
 
 </ShareNetwork>
 <br class="bottomM">
-                <b-button v-show="isOrganizator" @click="finishEvent" variant="danger">Finish Event</b-button> 
+                <b-button v-show="isOrganizator&&!event.finished" @click="finishEvent" variant="danger">Finish Event</b-button> 
 
+          </div>
+          <div v-show="isAdmin" id="adminovPosao">
+            <b-button  v-show="event.finished" @click="verifyEvent(true)" class="bottomM" variant="success">    Event was successfual</b-button> 
+              <b-button v-show="event.finished" @click="verifyEvent(false)" class="bottomM" variant="danger">  Event Failed</b-button> 
           </div>
         </div>
       </div>
@@ -83,6 +112,8 @@ export default {
   name: "SingleEvent",
   data() {
     return {
+      numOfppl:0,
+      suc:"",
       curentImage: null,
       curentImage1: null,
 
@@ -90,7 +121,7 @@ export default {
       isAdmin:false,
       isUser:false,
       isOrganizator:false,
-
+     
 
 
   thisURL:"",
@@ -114,9 +145,35 @@ export default {
     };
   },
   mounted() {
+
+
+
+ axios
+      .get("/event/goingNumber/"+this.id,{
+          headers: {
+
+                        "Authorization": "Bearer "+ localStorage.getItem("jwt"),
+          }}
+          )
+      .then((res) => {
+        this.numOfppl=res.data;
+
+      })
+
+  .catch(function (error) {
+    console.log(error);
+  });
+
+
+
+
+
+
+
+
+
     this.putRoles();
     this.userRole=localStorage.getItem("role"),
-    alert(this.userRole)
     this.thisURL="http://localhost:8080/#"+this.$router.currentRoute.path;
     axios
       .get("/event/"+this.id,{
@@ -129,7 +186,14 @@ export default {
 this.event=response.data 
 this.isOrganizator=response.data.organizedByThisUser
 console.log(response.data)
+console.log(this.isOrganizator+"AAAAAAAAAAAAA")
 
+if(response.data.succesful==true){
+    this.suc="Successful"
+  }else{
+        this.suc="NOT Successful"
+
+  }
 }
 
   )
@@ -137,15 +201,36 @@ console.log(response.data)
     console.log(error);
   });
 
+
   },
   methods:{
+    ConfirmPresence(){
+       axios.post("/user/confirmePresence",  JSON.stringify({
+             eventId: this.id,
+          }), {
+          headers: {
+              "Content-Type": "application/json",
+            "Authorization": "Bearer "+ localStorage.getItem("jwt"),
+
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          this.event.going=true;
+
+        })
+        .catch((res) => {
+          console.log(res);
+        });
+
+    },
 finishEvent(){
 
 
     var formData = new FormData();
       formData.append("afterImage", this.curentImage);
       formData.append("teamImage", this.curentImage);
-      formData.append("id",1)
+      formData.append("id",this.id)
 
       console.log(this.curentImage)
       console.log(this.curentImage1)
@@ -159,6 +244,8 @@ finishEvent(){
         })
         .then((res) => {
           console.log(res);
+                  this.$router.push("/")
+
         })
         .catch((res) => {
           console.log(res);
@@ -166,7 +253,27 @@ finishEvent(){
 
 
 },
+verifyEvent(isSucessful){
+ axios.post("/event/verify",  JSON.stringify({
+             credit: 0,
+             eventId: this.id,
+           successfull: isSucessful
+          }), {
+          headers: {
+              "Content-Type": "application/json",
+            "Authorization": "Bearer "+ localStorage.getItem("jwt"),
 
+          },
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((res) => {
+          console.log(res);
+        });
+        this.$router.push("/")
+
+},
 putRoles(){
     if(localStorage.getItem("role")=="ADMIN"){
       this.isAdmin=true;

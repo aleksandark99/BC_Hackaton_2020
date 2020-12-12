@@ -79,6 +79,10 @@ export default {
           localStorage.setItem("role", res.data.role);
           this.$store.commit("setUsername", this.form.username);
           this.$store.commit("setIsNotLogged", false);
+          if(res.data.role=="ADMIN"){
+                      this.$store.commit("setIsAdmin",true)
+
+          }
           this.$router.push("/")
                  console.log("1")
 

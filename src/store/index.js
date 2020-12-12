@@ -8,6 +8,7 @@ export default new Vuex.Store({
  state: {
     username:"User",
     isNotLogged:true,
+    isAdmin:false
 
 
  },
@@ -15,6 +16,9 @@ export default new Vuex.Store({
  mutations: {
     setUsername (state, payload) {
         state.username = payload
+      },
+      setIsAdmin (state, payload) {
+        state.isAdmin = payload
       },
       setIsNotLogged (state, payload) {
         state.isNotLogged = payload

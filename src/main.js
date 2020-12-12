@@ -23,7 +23,6 @@ axios.defaults.baseURL = 'https://garbage-collectors.herokuapp.com/garbagecollec
 
 
 
-
 Vue.config.productionTip = false
 
 new Vue({

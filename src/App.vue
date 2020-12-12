@@ -5,6 +5,7 @@
 <Navbar
 
  :isLoggedIn="this.$store.state.isNotLogged"
+ :isAdmin="this.$store.state.isAdmin"
 />
 
     <!-- <router-link to="/login">go to home test </router-link> -->
