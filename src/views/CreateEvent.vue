@@ -121,8 +121,7 @@ Places
         };
         reader.readAsDataURL(input.files[0]);
         this.curentImage = input.files[0];
-        // console.log("aaaaaaaaaa");
-        // console.log(this.cuurentImage);
+
       }
     },
     

@@ -50,7 +50,7 @@
                 accept="image/*"
               />
             </div>
-            <div class="image-preview" v-if="imageData.length > 0">
+            <div class="image-preview" v-if="imageData1.length > 0">
               <img class="preview" :src="imageData1" />
             </div>
 
@@ -83,6 +83,10 @@ export default {
   name: "SingleEvent",
   data() {
     return {
+      curentImage: null,
+      curentImage1: null,
+
+
       isAdmin:false,
       isUser:false,
       isOrganizator:false,
@@ -123,6 +127,7 @@ export default {
           )
       .then((response) => {
 this.event=response.data 
+this.isOrganizator=response.data.organizedByThisUser
 console.log(response.data)
 
 }
@@ -131,12 +136,35 @@ console.log(response.data)
   .catch(function (error) {
     console.log(error);
   });
-    this.isUerOrganizator();
 
   },
   methods:{
 finishEvent(){
-// PUT NA BACK DA SE FINISHUJE
+
+
+    var formData = new FormData();
+      formData.append("afterImage", this.curentImage);
+      formData.append("teamImage", this.curentImage);
+      formData.append("id",1)
+
+      console.log(this.curentImage)
+      console.log(this.curentImage1)
+
+ axios.post("/user/finish/event", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            "Authorization": "Bearer "+ localStorage.getItem("jwt"),
+
+          },
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((res) => {
+          console.log(res);
+        });
+
+
 },
 
 putRoles(){
@@ -148,14 +176,10 @@ putRoles(){
     }
 
 },
-isUerOrganizator(){
- if(localStorage.get("username")==this.event.organizedBy){
-   alert("Isti je organizator")
- }
-},
 
 
-   previewImage: function (event) {
+
+      previewImage: function (event) {
       var input = event.target;
       if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -163,13 +187,14 @@ isUerOrganizator(){
           this.imageData = e.target.result;
         };
         reader.readAsDataURL(input.files[0]);
-        this.cuurentImage = input.files[0];
-        // console.log("aaaaaaaaaa");
-        // console.log(this.cuurentImage);
+        this.curentImage = input.files[0];
+
       }
     },
     previewImage1: function (event) {
-      let input = event.target;
+      var input = event.target;
+      console.log("AAAAAAAAAA")
+      console.log(event.target)
       if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = (e) => {
