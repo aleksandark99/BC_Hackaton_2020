@@ -18,6 +18,8 @@ export default {
   name: 'EventsToApprove',
    data() {
       return {
+                    sortBy: "eventName",
+
              fields: [
         {
           label: "Event name",

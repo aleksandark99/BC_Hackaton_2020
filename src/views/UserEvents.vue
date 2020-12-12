@@ -79,9 +79,10 @@ export default {
 
     // ucitaj evente sa backa
 
-axios.get('/events/user/'+this.id)
+axios.get('/events/all/'+this.id)
   .then((response) => {
    this.events=response.data.events
+   console.log(response)
   }
 
   )

@@ -16,6 +16,8 @@ export default {
   name: 'FinishedEvents',
    data() {
       return {
+                            sortBy: "eventName",
+
              fields: [
         {
           label: "Event name",

@@ -11,6 +11,7 @@
           >
 
           <b-nav-item to="/finishedEvents">Finished events</b-nav-item>
+          <b-nav-item to="/score">SCOREBOARD</b-nav-item>
           <b-nav-item  v-show="isAdmin" to="/approve">Pending events to be approved</b-nav-item>
 
         </b-navbar-nav>
@@ -33,7 +34,7 @@
             <template #button-content>
               <em>Profile</em>
             </template>
-            <b-dropdown-item to="/newevent">My Profile</b-dropdown-item>
+            <b-dropdown-item             :to="`/users/${this.$store.state.username}`">My Profile</b-dropdown-item>
             <b-dropdown-item to="/logout">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
           
