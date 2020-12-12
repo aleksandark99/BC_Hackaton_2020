@@ -72,7 +72,7 @@ Places
         },
       },
       imageData: "",
-      cuurentImage: null,
+      curentImage: null,
       eventName:"",
       eventDescription:"",
 
@@ -87,8 +87,13 @@ Places
 
     },
     createEvent() {
+      console.log("aa")
+      console.log(this.eventDescription)
       let formData = new FormData();
-      formData.append("image", this.cuurentImage);
+      formData.append("image", this.curentImage);
+      formData.append("eventDescription", this.eventDescription);
+      formData.append("eventName", this.title);
+      formData.append("eventDescription", this.text);
       axios.post("user/event", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -112,7 +117,7 @@ Places
           this.imageData = e.target.result;
         };
         reader.readAsDataURL(input.files[0]);
-        this.cuurentImage = input.files[0];
+        this.curentImage = input.files[0];
         // console.log("aaaaaaaaaa");
         // console.log(this.cuurentImage);
       }
@@ -130,9 +135,9 @@ Places
   padding: 20px;
 }
 img.preview {
-  width: 200px;
+  width: 400px;
   background-color: white;
-  border: 1px solid #ddd;
+  border: 1px solid black;
   padding: 5px;
 }
 </style>
