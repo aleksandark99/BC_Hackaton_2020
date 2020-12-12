@@ -14,7 +14,7 @@
             <br />
             Event Description:
             <br />
-            <p id="eventDesc">{{ event.eventDescription }}</p>
+            <p id="eventDesc">{{ event.eventDescription.slice(1) }}</p>
             <br />
               <a :href="event.locationURL" target="_blank">{{event.locationString}}</a>
               <br>
@@ -27,7 +27,7 @@
               This event is in progress. Organizator will upload results when
               location is cleaned
             </p>
-
+            
             <div v-show="isOrganizator" id="afterImage" class="file-upload-form">
               Upload an image of place after cleanup:
               <b-form-file
