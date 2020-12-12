@@ -16,16 +16,19 @@
             <br />
             <p id="eventDesc">{{ event.eventDescription }}</p>
             <br />
-            <b-button :disabled="!event.isFinished" size="lg"
+              <a :href="event.locationURL" target="_blank">{{event.locationString}}</a>
+              <br>
+
+            <b-button v-show="isUser" :disabled="!event.going" class="bottomM" variant="success"
               >I am going !</b-button
             >
 
-            <p v-if="event.isFinished">
+            <p v-if="!event.finished">
               This event is in progress. Organizator will upload results when
               location is cleaned
             </p>
 
-            <div id="afterImage" class="file-upload-form">
+            <div v-show="isOrganizator" id="afterImage" class="file-upload-form">
               Upload an image of place after cleanup:
               <b-form-file
                 class="mt-3"
@@ -34,11 +37,11 @@
                 accept="image/*"
               />
             </div>
-            <div class="image-preview" v-if="imageData.length > 0">
+            <div v-show="isOrganizator" class="image-preview" v-if="imageData.length > 0">
               <img class="preview" :src="imageData" />
             </div>
 
-            <div id="teamImage" class="file-upload-form">
+            <div v-show="isOrganizator" id="teamImage" class="file-upload-form">
               Upload team picture:
               <b-form-file
                 class="mt-3"
@@ -62,7 +65,7 @@
 
 </ShareNetwork>
 <br class="bottomM">
-                <b-button v-show="isUser" @click="finishEvent" variant="danger">Finish Event</b-button> 
+                <b-button v-show="isOrganizator" @click="finishEvent" variant="danger">Finish Event</b-button> 
 
           </div>
         </div>
@@ -82,6 +85,7 @@ export default {
     return {
       isAdmin:false,
       isUser:false,
+      isOrganizator:false,
 
 
 
@@ -111,9 +115,17 @@ export default {
     alert(this.userRole)
     this.thisURL="http://localhost:8080/#"+this.$router.currentRoute.path;
     axios
-      .get("/event/"+this.id)
+      .get("/event/"+this.id,{
+          headers: {
+
+                        "Authorization": "Bearer "+ localStorage.getItem("jwt"),
+          }}
+          )
       .then((response) => {
-this.event=response.data  }
+this.event=response.data 
+console.log(response.data)
+
+}
 
   )
   .catch(function (error) {

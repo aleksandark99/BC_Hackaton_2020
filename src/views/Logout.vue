@@ -6,9 +6,11 @@
 export default {
   name: 'Logout',
   mounted(){
-      localStorage.removeItem("username")
+    localStorage.removeItem("username")
     localStorage.removeItem("role")
-   this.$router.push("/login")
+         this.$store.commit("setUsername", null);
+          this.$store.commit("setIsNotLogged", true);
+    this.$router.push("/login")
 
   }
 };

@@ -3,13 +3,13 @@
     <div class="container" id="s">
       <div class="row">
         <div class="col-md-4 mx-auto">
-          <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+          <b-form @submit="onSubmit" @reset="onReset" >
             <b-form-group
               id="input-group-1"
               label="Username:"
               label-for="input-1"
             >
-            <b-form-input
+              <b-form-input
                 id="input-1"
                 v-model="form.username"
                 required
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
   name: "Login",
   data() {
@@ -52,41 +52,47 @@ export default {
       show: true,
     };
   },
-  methods:{
-    
-       async onSubmit() {
-    var formData = new FormData();
+  methods: {
+     onSubmit(event) {
+       event.preventDefault();
+       console.log(event)
+      var formData = new FormData();
       formData.append("username", this.form.username);
-            formData.append("password", this.form.password);
+      formData.append("password", this.form.password);
 
- console.log(this.form.username);
-  console.log(this.form.password);
-
-axios.post("/login",  JSON.stringify({
-          username:this.form.username,
-          password:this.form.password
-        }), {
-          headers: {
-            "Content-Type": "application/json",
+      axios
+        .post(
+          "/login",
+          JSON.stringify({
+            username: this.form.username,
+            password: this.form.password,
+          }),
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
           }
- }
- ).then((res) => {
+        )
+        .then((res) => {
           localStorage.setItem("jwt", res.data.jwt);
           localStorage.setItem("username", this.form.username);
           localStorage.setItem("role", res.data.role);
-          this.$store.commit("setUsername",this.form.username);         
+          this.$store.commit("setUsername", this.form.username);
+          this.$store.commit("setIsNotLogged", false);
+          this.$router.push("/")
+                 console.log("1")
+
         })
         .catch((res) => {
           console.log(res);
         });
 
- 
-       },
-       onReset(){
-         alert("reset")
-       }
-
-  }
+    },
+    onReset() {
+      this.username="",
+      this.password=""
+    },
+  },
 };
 </script>
 

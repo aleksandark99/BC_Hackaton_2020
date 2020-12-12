@@ -2,7 +2,10 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-<Navbar/>
+<Navbar
+
+ :isLoggedIn="this.$store.state.isNotLogged"
+/>
 
     <!-- <router-link to="/login">go to home test </router-link> -->
 

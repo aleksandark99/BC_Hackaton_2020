@@ -17,9 +17,9 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-                              <b-nav-item href="#">Register</b-nav-item>
-                              <b-nav-item  to="/login">Login</b-nav-item>
-                              <b-nav-item to="/login">My events</b-nav-item>
+                              <b-nav-item  v-show="isLoggedIn" href="#">Register</b-nav-item>
+                              <b-nav-item  v-show="isLoggedIn" to="/login">Login</b-nav-item>
+                              <b-nav-item v-show="!isLoggedIn" to="/login">My events</b-nav-item>
 
 
                      
@@ -49,6 +49,14 @@
 <script>
 export default {
   name: "Navbar",
+    props: 
+    {
+
+      isLoggedIn:{
+             type: Boolean,
+      required: true,
+      }
+    }
 };
 </script>
 

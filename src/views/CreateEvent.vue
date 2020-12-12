@@ -94,8 +94,9 @@ Places
       formData.append("eventDescription", this.eventDescription);
       formData.append("eventName", this.title);
       formData.append("eventDescription", this.text);
-      formData.append("locationURL", this.form.country.label);
-      formData.append("locationString", "https://www.google.com/maps/place/"+this.form.country.label.replace(/,/g, ' '));
+      console.log("event desc "+this.text)
+      formData.append("locationString", this.form.country.label);
+      formData.append("locationURL", "https://www.google.com/maps/place/"+this.form.country.label.replace(/,/g, ' '));
       axios.post("user/event", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
