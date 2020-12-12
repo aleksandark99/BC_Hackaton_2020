@@ -131,6 +131,7 @@ console.log(response.data)
   .catch(function (error) {
     console.log(error);
   });
+    this.isUerOrganizator();
 
   },
   methods:{
@@ -145,8 +146,13 @@ putRoles(){
     else if(localStorage.getItem("role")=="USER"){
       this.isUser=true
     }
-},
 
+},
+isUerOrganizator(){
+ if(localStorage.get("username")==this.event.organizedBy){
+   alert("Isti je organizator")
+ }
+},
 
 
    previewImage: function (event) {
