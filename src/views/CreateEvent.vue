@@ -31,6 +31,8 @@
   </places>
 
       <div>
+        Description:
+        <br>
    <b-form-textarea
         id="textarea-auto-height"
         placeholder="Auto height textarea"
@@ -87,17 +89,17 @@ Places
 
     },
     createEvent() {
-      console.log("aa")
-      console.log(this.eventDescription)
       let formData = new FormData();
       formData.append("image", this.curentImage);
       formData.append("eventDescription", this.eventDescription);
       formData.append("eventName", this.title);
       formData.append("eventDescription", this.text);
+      formData.append("locationURL", this.form.country.label);
+      formData.append("locationString", "https://www.google.com/maps/place/"+this.form.country.label.replace(/,/g, ' '));
       axios.post("user/event", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhIiwiZXhwIjoxNjA3NzY1MTI5LCJpYXQiOjE2MDc3MjkxMjl9.1UAXU0Ltjt4quMHsyx17Ate4q-t59dKomugtiZEf5IU",
+            "Authorization": "Bearer "+ localStorage.getItem("jwt"),
 
           },
         })

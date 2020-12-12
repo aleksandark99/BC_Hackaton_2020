@@ -53,15 +53,16 @@
 
                 <ShareNetwork
     network="twitter"
-    url="https://adoring-jackson-580734.netlify.app/#/event/1"
+    :url=thisURL
     title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
     description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
     hashtags="CleanWithUs"
   >
-                  <b-button variant="success">    Share on Twitter</b-button> 
+                  <b-button  class="bottomM" variant="success">    Share on Twitter</b-button> 
 
 </ShareNetwork>
-                <b-button @click="finishEvent" variant="success">Finish Event</b-button> 
+<br class="bottomM">
+                <b-button v-show="isUser" @click="finishEvent" variant="danger">Finish Event</b-button> 
 
           </div>
         </div>
@@ -71,12 +72,7 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import VueHead from 'vue-head'
- 
-Vue.use(VueHead)
-Vue.use(VueRouter)
+
 
 import axios from "axios";
 export default {
@@ -84,24 +80,17 @@ export default {
   name: "SingleEvent",
   data() {
     return {
-  head: {
-    title: {
-      inner: 'It will be a pleasure'
-    },
-    // Meta tags
-    meta: [
-      { name: 'application-name', content: 'Name of my application' },
-      { name: 'description', content: 'A description of the page', id: 'desc' }, // id to replace intead of create element
-      // ...
-      // Twitter
-      { name: 'twitter:title', content: 'Content Title' },
-      // with shorthand
-    ]},
+      isAdmin:false,
+      isUser:false,
+
+
+
+  thisURL:"",
 
       event: {
         eventName: "eventName",
-        eventDescription:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        // eventDescription:
+        //   "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         imgBeforeURL: "https://picsum.photos/1024/400/?image=41",
         imgAfterURL: "",
         imgTeamURL: "",
@@ -117,24 +106,34 @@ export default {
     };
   },
   mounted() {
+    this.putRoles();
+    this.userRole=localStorage.getItem("role"),
+    alert(this.userRole)
+    this.thisURL="http://localhost:8080/#"+this.$router.currentRoute.path;
     axios
-      .get("/event/id", {
-        params: {
-          ID: 12345,
-        },
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .get("/event/"+this.id)
+      .then((response) => {
+this.event=response.data  }
+
+  )
+  .catch(function (error) {
+    console.log(error);
+  });
+
   },
   methods:{
 finishEvent(){
 // PUT NA BACK DA SE FINISHUJE
 },
 
+putRoles(){
+    if(localStorage.getItem("role")=="ADMIN"){
+      this.isAdmin=true;
+    }
+    else if(localStorage.getItem("role")=="USER"){
+      this.isUser=true
+    }
+},
 
 
 
@@ -164,6 +163,9 @@ finishEvent(){
         // console.log(this.cuurentImage);
       }
     },
+
+
+
   }
 };
 </script>
@@ -172,8 +174,15 @@ finishEvent(){
 #eventDesc {
   border-style: 1px solid black;
   color: black;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+.bottomM{
+    margin-top: 20px;
 
+  margin-bottom: 10px;
+}
 .file-upload-form,
 .image-preview {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -184,5 +193,11 @@ img.preview {
   background-color: grey;
   border: 1px solid red;
   padding: 7px;
+}
+
+#descP
+{
+  width: 100px;
+
 }
 </style>

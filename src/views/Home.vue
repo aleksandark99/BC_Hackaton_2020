@@ -6,7 +6,7 @@
         <b-card-group class="col-md-3" v-for="n in events" v-bind:key="n.id">
           <b-card
             :title="n.eventName"
-            :img-src="n.imageURL"
+            :img-src="n.imageURLstart"
             tag="article"
             style="max-width: 20rem"
             class="mb-2 cardFix d-flex flex-column"
@@ -31,6 +31,7 @@
 
 <script>
 import router from '../router/index.js'
+import axios from 'axios'
 export default {
   name: "Home",
   data() {
@@ -75,6 +76,17 @@ export default {
   mounted() {
 
     // ucitaj evente sa backa
+
+axios.get('/events/unfinished/unverified')
+  .then((response) => {
+   this.events=response.data.events
+  }
+
+  )
+  .catch(function (error) {
+    console.log(error);
+  });
+
   },
   methods:{
     goToEvent(id){

@@ -7,10 +7,10 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-button  to="/newevent" size="sm" class="my-2 my-sm-0" variant="success">Create new event</b-button
+          <b-button  to="/newevent"  class="my-2 my-sm-0" variant="success">Create new event</b-button
           >
 
-          <b-nav-item href="#">Finished events</b-nav-item>
+          <b-nav-item to="/FinishedEvents">Finished events</b-nav-item>
           <b-nav-item href="#">Pending events to be approved</b-nav-item>
 
         </b-navbar-nav>
@@ -18,7 +18,7 @@
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
                               <b-nav-item href="#">Register</b-nav-item>
-                              <b-nav-item to="/login">Login</b-nav-item>
+                              <b-nav-item  to="/login">Login</b-nav-item>
                               <b-nav-item to="/login">My events</b-nav-item>
 
 
@@ -31,10 +31,10 @@
           <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
             <template #button-content>
-              <em>User</em>
+              <em>Profile</em>
             </template>
-            <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+            <b-dropdown-item to="/newevent">My Profile</b-dropdown-item>
+            <b-dropdown-item to="/logout">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
           
           

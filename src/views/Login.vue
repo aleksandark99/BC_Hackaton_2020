@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "Login",
   data() {
@@ -52,9 +53,34 @@ export default {
     };
   },
   methods:{
-       async onSubmit(event) {
-                  alert("submit",event)
+    
+       async onSubmit() {
+    var formData = new FormData();
+      formData.append("username", this.form.username);
+            formData.append("password", this.form.password);
 
+ console.log(this.form.username);
+  console.log(this.form.password);
+
+axios.post("/login",  JSON.stringify({
+          username:this.form.username,
+          password:this.form.password
+        }), {
+          headers: {
+            "Content-Type": "application/json",
+          }
+ }
+ ).then((res) => {
+          localStorage.setItem("jwt", res.data.jwt);
+          localStorage.setItem("username", this.form.username);
+          localStorage.setItem("role", res.data.role);
+          this.$store.commit("setUsername",this.form.username);         
+        })
+        .catch((res) => {
+          console.log(res);
+        });
+
+ 
        },
        onReset(){
          alert("reset")
