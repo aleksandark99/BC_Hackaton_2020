@@ -37,39 +37,39 @@ export default {
   data() {
     return {
       events: [
-        {
-          eventId: 1,
-          imageURL: "https://picsum.photos/1024/400/?image=41",
-          eventName: "evet name",
-          eventDescription: "description of this event bla bla ",
-        },
-        {
-          eventId: 3,
-          imageURL: "https://picsum.photos/1024/400/?image=41",
-          eventName: "evet name2",
-          eventDescription: "description of this event bla bla ",
-        },
-        {
-          eventId: 2,
-          imageURL: "https://picsum.photos/1024/400/?image=41",
-          eventName: "evet name3",
-          eventDescription:
-            "description of this event event event  eventevent event event event bla bla ",
-        },
-        {
-          eventId: 2,
-          imageURL: "https://picsum.photos/1024/400/?image=41",
-          eventName: "evet name3",
-          eventDescription:
-            "description of this event event event  eventevent event event event bla bla ",
-        },
-        {
-          eventId: 2,
-          imageURL: "https://picsum.photos/1024/400/?image=41",
-          eventName: "evet name3",
-          eventDescription:
-            "description of this event event event  eventevent event event event bla bla ",
-        },
+        // {
+        //   eventId: 1,
+        //   imageURL: "https://picsum.photos/1024/400/?image=41",
+        //   eventName: "evet name",
+        //   eventDescription: "description of this event bla bla ",
+        // },
+        // {
+        //   eventId: 3,
+        //   imageURL: "https://picsum.photos/1024/400/?image=41",
+        //   eventName: "evet name2",
+        //   eventDescription: "description of this event bla bla ",
+        // },
+        // {
+        //   eventId: 2,
+        //   imageURL: "https://picsum.photos/1024/400/?image=41",
+        //   eventName: "evet name3",
+        //   eventDescription:
+        //     "description of this event event event  eventevent event event event bla bla ",
+        // },
+        // {
+        //   eventId: 2,
+        //   imageURL: "https://picsum.photos/1024/400/?image=41",
+        //   eventName: "evet name3",
+        //   eventDescription:
+        //     "description of this event event event  eventevent event event event bla bla ",
+        // },
+        // {
+        //   eventId: 2,
+        //   imageURL: "https://picsum.photos/1024/400/?image=41",
+        //   eventName: "evet name3",
+        //   eventDescription:
+        //     "description of this event event event  eventevent event event event bla bla ",
+        // },
       ],
     };
   },
