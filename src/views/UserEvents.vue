@@ -1,6 +1,6 @@
 <template>
   <div>
-        <h1>User Organized all these events!</h1>
+        <h1>User {{id}} Organized all these events!</h1>
     <div class="container-fluid">
       <div class="row">
         <b-card-group class="col-md-3" v-for="n in events" v-bind:key="n.id">
