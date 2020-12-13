@@ -1,6 +1,7 @@
 <template>
   <div>
     <!-- this is where all events will be shown -->
+    <h1>Feed: Events in progress</h1>
     <div class="container-fluid">
       <div class="row">
         <b-card-group class="col-md-3" v-for="n in events" v-bind:key="n.id">
