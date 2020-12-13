@@ -112,6 +112,7 @@ export default {
   name: "SingleEvent",
   data() {
     return {
+      jjjjj:0,
       numOfppl:0,
       suc:"",
       curentImage: null,
@@ -254,8 +255,11 @@ finishEvent(){
 
 },
 verifyEvent(isSucessful){
+  if(isSucessful==true){
+this.jjjjj=42;
+  }
  axios.post("/event/verify",  JSON.stringify({
-             credit: 0,
+             credit: this.jjjjj,
              eventId: this.id,
            successfull: isSucessful
           }), {

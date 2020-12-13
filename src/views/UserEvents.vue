@@ -82,7 +82,6 @@ export default {
 axios.get('/events/all/'+this.id)
   .then((response) => {
    this.events=response.data.events
-   console.log(response)
   }
 
   )
