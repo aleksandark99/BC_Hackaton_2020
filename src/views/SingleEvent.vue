@@ -252,6 +252,7 @@ finishEvent(){
         })
         .catch((res) => {
           console.log(res);
+          alert("In orderd to finish event you must upload all pictures")
         });
 
 
