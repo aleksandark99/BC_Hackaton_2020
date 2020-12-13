@@ -29,10 +29,10 @@
 
   
 
-          <b-nav-item-dropdown right>
+          <b-nav-item-dropdown  v-show="!isLoggedIn" right>
             <!-- Using 'button-content' slot -->
-            <template #button-content>
-              <em v-show="!isLoggedIn" > Profile</em>
+            <template  #button-content>
+              <em > Profile</em>
             </template>
             <b-dropdown-item             :to="`/users/${this.$store.state.username}`">My Profile</b-dropdown-item>
             <b-dropdown-item to="/logout">Sign Out</b-dropdown-item>
