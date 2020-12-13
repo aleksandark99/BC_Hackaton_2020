@@ -33,5 +33,16 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background:  #99ffbb;
+    height: 100%;
+
+
 }
+html, 
+body {
+    height: 100%;
+    background: rgb(153, 255, 153);
+
+}
+
 </style>

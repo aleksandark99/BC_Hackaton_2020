@@ -1,13 +1,19 @@
 <template>
   <div>
     <h1>List of events waiting to be approved</h1>
-        <b-table responsive :fields="fields" :items="items" :sort-by.sync="sortBy">
+      <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+        <b-table style="background:white" responsive :fields="fields" :items="items" :sort-by.sync="sortBy">
       <template v-slot:cell(eventName)="data">
         <router-link :to="`/event/${data.item.eventId}`">{{
           data.value
         }}</router-link>
       </template>
     </b-table>
+  </div>
+      </div>
+      </div>
   </div>
 </template>
 
@@ -25,13 +31,13 @@ export default {
           label: "Event name",
           key: "eventName",
           sortable: true,
-          class: "text-left",
+          class: "text-center",
         },
       {
           label: "Organized by",
           key: "organizedBy",
           sortable: true,
-          class: "text-left",
+          class: "text-center",
         },
              ],
         items: [

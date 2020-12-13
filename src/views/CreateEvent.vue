@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-5 mx-auto">
     <div class="file-upload-form">
-      Upload an image of place that needs our help:
+     <p style="background:#e0ebeb; color:black"> Upload an image of a place that needs our help:</p>
       <b-form-file class="mt-3" plain @change="previewImage" accept="image/*" />
     </div>
     <div class="image-preview" v-if="imageData.length > 0">
@@ -35,14 +35,14 @@
         <br>
    <b-form-textarea
         id="textarea-auto-height"
-        placeholder="Auto height textarea"
+        placeholder="Tell us more about your event"
         rows="5"
         max-rows="8"
         v-model="text"
 
       ></b-form-textarea>
   </div>
-    <b-button @click="createEvent" variant="success">Create Event</b-button> 
+    <b-button @click="createEvent" variant="success" style="margin-top:10px;margin-bottom:30px">Create Event</b-button> 
 
     </div>
     </div>

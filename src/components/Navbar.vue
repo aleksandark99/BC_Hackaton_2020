@@ -1,13 +1,13 @@
 <template>
   <div>
-    <b-navbar id="nav" toggleable="lg" type="dark" variant="info">
+    <b-navbar id="nav" toggleable="lg" type="dark" variant="dark">
       <b-navbar-brand to="/">GarbageCollectors</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-button v-show="!isLoggedIn"  to="/newevent"  class="my-2 my-sm-0" variant="success">Create new event</b-button
+          <b-button v-show="!isLoggedIn"  to="/newevent"  class="my-2 my-sm-0" variant="warning">Create new event</b-button
           >
 
           <b-nav-item to="/finishedEvents">Finished events</b-nav-item>

@@ -18,7 +18,8 @@
             <br />
             <p id="eventDesc">{{ event.eventDescription.slice(1) }}</p>
             <br />
-            <p>this event is taking place in:</p>
+            <p>            <b-icon-globe2/>
+This event is taking place in: </p>
               <a :href="event.locationURL" target="_blank">{{event.locationString}}</a>
               <br>
                 <div id="posleEventa" v-show="event.finished">
@@ -206,6 +207,7 @@ if(response.data.succesful==true){
   },
   methods:{
     ConfirmPresence(){
+      this.numOfppl+=1
        axios.post("/user/confirmePresence",  JSON.stringify({
              eventId: this.id,
           }), {
@@ -326,11 +328,11 @@ putRoles(){
 
 <style scoped>
 #eventDesc {
-  border-style: 1px solid black;
+  /* border-style: 1px solid black;
   color: black;
     white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; */
 }
 .bottomM{
     margin-top: 20px;

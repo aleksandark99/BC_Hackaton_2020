@@ -1,13 +1,20 @@
 <template>
-  <div>
-    <h1>===Yearly Scoreboard====</h1>
-        <b-table responsive :fields="fields" :items="items" :sort-by.sync="sortBy" >
+  <div >
+    <h1>====Yearly Scoreboard====</h1>
+        <h4>(Top 3 users will be rewarded for their contributon)</h4>
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+        <b-table style="border-style: solid;background:white" striped hover responsive :fields="fields" :items="items" :sort-by.sync="sortBy" >
       <template v-slot:cell(username)="data">
         <router-link :to="`/users/${data.item.username}`">{{
           data.value
         }}</router-link>
       </template>
     </b-table>
+        </div>
+      </div>
+  </div>
   </div>
 </template>
 <script>
@@ -22,7 +29,7 @@ export default {
         {
               label: "Points",
           key: "totalScore",
-          class: "text-left",
+          class: "text-center",
           sortable:true
         },
         {
@@ -70,5 +77,6 @@ export default {
 
 
 
-<style>
+<style scoped>
+
 </style>

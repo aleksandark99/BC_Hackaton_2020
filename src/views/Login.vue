@@ -30,8 +30,8 @@
                 placeholder="Enter password"
               ></b-form-input>
             </b-form-group>
-            <b-button type="submit" variant="primary">Submit</b-button>
-            <b-button type="reset" variant="danger">Reset</b-button>
+            <b-button class="btl" type="submit" variant="primary">Submit</b-button>
+            <b-button class="btl" type="reset" variant="danger">Reset</b-button>
           </b-form>
         </div>
       </div>
@@ -104,5 +104,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.btn-primary {
+margin-left: 10px;
+margin-right: 10px;
+
+}
 </style>

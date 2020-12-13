@@ -14,7 +14,7 @@
             img-height="200"
           >
             <b-card-text>
-              {{ n.eventDescription.slice(0, 150) }}
+              {{ n.eventDescription.slice(1, 150) }}
               <br />
               <p style="color: blue">Check event for more ...</p>
             </b-card-text>
@@ -108,5 +108,13 @@ axios.get('/events/unfinished/unverified')
 }
 .bt {
   margin-top: auto;
+}
+
+.card-body {
+background: #f7ffe6
+
+
+
+;
 }
 </style>

@@ -1,12 +1,19 @@
 <template>
   <div>
-       <b-table responsive :fields="fields" :items="items" :sort-by.sync="sortBy">
+      <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <h1>Here you can see list of all finished events so far</h1>
+       <b-table style="background:white" responsive :fields="fields" :items="items" :sort-by.sync="sortBy">
       <template v-slot:cell(eventName)="data">
         <router-link :to="`/event/${data.item.eventId}`">{{
           data.value
         }}</router-link>
       </template>
     </b-table>
+  </div>
+      </div>
+      </div>
   </div>
 </template>
 
