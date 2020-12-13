@@ -1,9 +1,10 @@
 <template>
-  <div>
-    <div class="container" id="s">
+  <div class="s">
+    <div class="container" >
       <div class="row">
         <div class="col-md-6 mx-auto">
           <div>
+            <div style="border-style: ridge;border-color: #f7ffe6; margin-bottom:5px; padding:25px; ">
             <h1>{{event.eventName}}</h1>
             <h2 v-show="event.finished">This event was {{suc}}</h2>
             This is picure of location before cleanup:
@@ -46,7 +47,6 @@ This event is taking place in: </p>
             <b-button @click="ConfirmPresence" v-show="isUser&&!event.finished" :disabled="event.going" class="bottomM" variant="success"
               >I am going !</b-button
             >
-
             <p v-if="!event.finished">
               This event is in progress. Organizator will upload results when
               location is cleaned
@@ -87,7 +87,7 @@ This event is taking place in: </p>
     hashtags="CleanWithUs"
   >   
 
-                  <b-button  class="bottomM" variant="success">    Share on Twitter</b-button> 
+                  <b-button  class="bottomM" variant="info">    Share on Twitter</b-button> 
 
 </ShareNetwork>
 <br class="bottomM">
@@ -98,7 +98,8 @@ This event is taking place in: </p>
             <b-button  v-show="event.finished&&!event.verified" @click="verifyEvent(true)" class="bottomM" variant="success">    Event was successfual</b-button> 
               <b-button v-show="event.finished&&!event.verified" @click="verifyEvent(false)" class="bottomM" variant="danger">  Event Failed</b-button> 
           </div>
-        </div>
+        </div>          </div>
+
       </div>
     </div>
   </div>
@@ -357,4 +358,6 @@ img.preview {
   width: 100px;
 
 }
+#s{
+height: 100%;}
 </style>
