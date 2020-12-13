@@ -74,6 +74,7 @@ export default {
           }
         )
         .then((res) => {
+          if(!res.data.stringResponse.error){
           localStorage.setItem("jwt", res.data.jwt);
           localStorage.setItem("username", this.form.username);
           localStorage.setItem("role", res.data.role);
@@ -83,8 +84,11 @@ export default {
                       this.$store.commit("setIsAdmin",true)
 
           }
-          this.$router.push("/")
-                 console.log("1")
+                    this.$router.push("/")
+
+          }else{
+            alert("Wrong password or username")
+          }
 
         })
         .catch((res) => {

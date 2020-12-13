@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- this is where all events will be shown -->
+        <h1>User Organized all these events!</h1>
     <div class="container-fluid">
       <div class="row">
         <b-card-group class="col-md-3" v-for="n in events" v-bind:key="n.id">
@@ -14,7 +14,7 @@
             img-height="200"
           >
             <b-card-text>
-              {{ n.eventDescription.slice(0, 150) }}
+              {{ n.eventDescription.slice(1, 150) }}
               <br />
               <p style="color: blue">Check event for more ...</p>
             </b-card-text>
@@ -39,39 +39,39 @@ export default {
   data() {
     return {
       events: [
-        {
-          eventId: 1,
-          imageURL: "https://picsum.photos/1024/400/?image=41",
-          eventName: "evet name",
-          eventDescription: "description of this event bla bla ",
-        },
-        {
-          eventId: 3,
-          imageURL: "https://picsum.photos/1024/400/?image=41",
-          eventName: "evet name2",
-          eventDescription: "description of this event bla bla ",
-        },
-        {
-          eventId: 2,
-          imageURL: "https://picsum.photos/1024/400/?image=41",
-          eventName: "evet name3",
-          eventDescription:
-            "description of this event event event  eventevent event event event bla bla ",
-        },
-        {
-          eventId: 2,
-          imageURL: "https://picsum.photos/1024/400/?image=41",
-          eventName: "evet name3",
-          eventDescription:
-            "description of this event event event  eventevent event event event bla bla ",
-        },
-        {
-          eventId: 2,
-          imageURL: "https://picsum.photos/1024/400/?image=41",
-          eventName: "evet name3",
-          eventDescription:
-            "description of this event event event  eventevent event event event bla bla ",
-        },
+        // {
+        //   eventId: 1,
+        //   imageURL: "https://picsum.photos/1024/400/?image=41",
+        //   eventName: "evet name",
+        //   eventDescription: "description of this event bla bla ",
+        // },
+        // {
+        //   eventId: 3,
+        //   imageURL: "https://picsum.photos/1024/400/?image=41",
+        //   eventName: "evet name2",
+        //   eventDescription: "description of this event bla bla ",
+        // },
+        // {
+        //   eventId: 2,
+        //   imageURL: "https://picsum.photos/1024/400/?image=41",
+        //   eventName: "evet name3",
+        //   eventDescription:
+        //     "description of this event event event  eventevent event event event bla bla ",
+        // },
+        // {
+        //   eventId: 2,
+        //   imageURL: "https://picsum.photos/1024/400/?image=41",
+        //   eventName: "evet name3",
+        //   eventDescription:
+        //     "description of this event event event  eventevent event event event bla bla ",
+        // },
+        // {
+        //   eventId: 2,
+        //   imageURL: "https://picsum.photos/1024/400/?image=41",
+        //   eventName: "evet name3",
+        //   eventDescription:
+        //     "description of this event event event  eventevent event event event bla bla ",
+        // },
       ],
     };
   },
