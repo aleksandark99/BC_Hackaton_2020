@@ -51,7 +51,8 @@ This event is taking place in: </p>
               This event is in progress. Organizator will upload results when
               location is cleaned
             </p>
-            <div v-show="isOrganizator&&!event.finished" id="afterImage" class="file-upload-form">
+            <div v-show="isOrganizator&&!event.finished" id="afterImage" class="file-upload-form"><br><br><br>
+
               Upload an image of place after cleanup:
               <b-form-file
                 class="mt-3"
