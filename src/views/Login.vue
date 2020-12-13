@@ -1,12 +1,16 @@
 <template>
-  <div>
+  <div id="loginPage">
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="container" id="s">
       <div class="row">
         <div class="col-md-4 mx-auto">
           <b-form @submit="onSubmit" @reset="onReset" >
             <b-form-group
               id="input-group-1"
-              label="Username:"
+              label=""
               label-for="input-1"
             >
               <b-form-input
@@ -19,7 +23,7 @@
 
             <b-form-group
               id="input-group-2"
-              label="Password:"
+              label=""
               label-for="input-2"
             >
               <b-form-input
@@ -109,5 +113,15 @@ export default {
 margin-left: 10px;
 margin-right: 10px;
 
+}
+#loginPage{
+ background-image: url("../assets/nature.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  image-rendering: optimizeSpeed;
+  margin-top: -20px;
+  height: 100%;
+  margin-bottom: 20px;
 }
 </style>
