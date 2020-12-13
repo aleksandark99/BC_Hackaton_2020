@@ -45,10 +45,10 @@ export default {
         },
              ],
         items: [
-          { eventName: "aaaa", successfull: false, organizedBy:"Pera Petrovic",id:2 },
-          { eventName: "aaaa", successfull: 'Larsen', organizedBy: 'Shaw' },
-          { eventName: "aaaa", successfull: 'Geneva', organizedBy: 'Wilson' },
-          { eventName: "aaaa", successfull: 'Jami', organizedBy: 'Carney' }
+          // { eventName: "aaaa", successfull: false, organizedBy:"Pera Petrovic",id:2 },
+          // { eventName: "aaaa", successfull: 'Larsen', organizedBy: 'Shaw' },
+          // { eventName: "aaaa", successfull: 'Geneva', organizedBy: 'Wilson' },
+          // { eventName: "aaaa", successfull: 'Jami', organizedBy: 'Carney' }
         ]
       }
     },
