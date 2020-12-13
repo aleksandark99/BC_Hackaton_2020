@@ -20,7 +20,7 @@
         <b-navbar-nav class="ml-auto">
                               <b-nav-item  v-show="isLoggedIn" href="#">Register</b-nav-item>
                               <b-nav-item  v-show="isLoggedIn" to="/login">Login</b-nav-item>
-                              <b-nav-item v-show="!isLoggedIn" to="/login">My events</b-nav-item>
+                              <!-- <b-nav-item v-show="!isLoggedIn" :to="`/users/${this.$store.state.username}`">My events</b-nav-item> -->
 
 
                      
